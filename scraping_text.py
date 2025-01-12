@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 
 service = Service('chromedriver-win64/chromedriver.exe')
 
+
 def get_driver():
     # Set options to make browsing easier
     options = webdriver.ChromeOptions()
@@ -18,10 +19,12 @@ def get_driver():
 
     return driver
 
+
 def main():
     driver = get_driver()
     element = driver.find_element(by='xpath', value="/html/body/div[1]/div/h1[1]")
     print(element.text)
+
 
 if __name__ == "__main__":
     main()

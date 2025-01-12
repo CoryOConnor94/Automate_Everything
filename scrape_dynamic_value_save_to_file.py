@@ -28,14 +28,17 @@ def clean_text(text):
     output = (text.split(": ")[1])
     return output
 
+
 def get_date_time():
     date_time = datetime.now()
     formatted_datetime = date_time.strftime('%y-%m-%d-%H-%M-%S')
     return formatted_datetime
 
+
 def save_to_file(formatted_datetime, current_temp):
     with open(formatted_datetime, "w") as file:
         file.write(current_temp)
+
 
 def main():
     driver = get_driver()
