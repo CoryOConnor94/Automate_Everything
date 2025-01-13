@@ -4,6 +4,7 @@ import time
 
 service = Service('chromedriver-win64/chromedriver.exe')
 
+
 def get_driver():
     # Set options to make browsing easier
     options = webdriver.ChromeOptions()
