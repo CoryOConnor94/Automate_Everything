@@ -5,7 +5,7 @@ import time
 USERNAME = 'mitchconnor886@gmail.com'
 PASSWORD = 'automate'
 
-service = Service('chromedriver-win64/chromedriver.exe')
+service = Service('../chromedriver-win64/chromedriver.exe')
 
 
 def get_driver():

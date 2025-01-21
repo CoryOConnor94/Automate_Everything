@@ -2,10 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import time
 
-USERNAME = 'automated'
-PASSWORD = 'automatedautomated'
-
-service = Service('chromedriver-win64/chromedriver.exe')
+service = Service('../chromedriver-win64/chromedriver.exe')
 
 
 def get_driver():
@@ -19,24 +16,24 @@ def get_driver():
     options.add_argument("disable-blink-features=AutomationControlled")
 
     driver = webdriver.Chrome(service=service, options=options)
-    driver.get("http://automated.pythonanywhere.com/login/")
+    driver.get("http://automated.pythonanywhere.com")
 
     return driver
 
 
-def login(driver):
-    driver.find_element(by='id', value="id_username").send_keys(USERNAME)
-    time.sleep(2)
-    driver.find_element(by='id', value="id_password").send_keys(PASSWORD)
-    driver.find_element(by='xpath', value='/html/body/div[1]/div/div/div[3]/form/button').click()
-    driver.find_element(by='xpath', value='/html/body/nav/div/a').click()
-    print(driver.current_url)
+def clean_text(text):
+    """Extract only the temperature from text"""
+    output = float(text.split(": ")[1])
+    return output
 
 
 def main():
     driver = get_driver()
-    login(driver)
-
+    time.sleep(2)
+    element = driver.find_element(by='xpath', value="/html/body/div[1]/div/h1[2]")
+    temperature = clean_text(element.text)
+    print(temperature)
+    
 
 if __name__ == "__main__":
     main()

@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 
 
-service = Service('chromedriver-win64/chromedriver.exe')
+service = Service('../chromedriver-win64/chromedriver.exe')
 
 
 def get_driver():
